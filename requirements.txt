@@ -1,0 +1,10 @@
+sqlite
+fastapi
+uvicorn
+pytest
+httpx
+pandas
+openpyxl
+numpy
+matplotlib
+seaborn
