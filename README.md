@@ -36,7 +36,7 @@ where tbl_name is 'epex_12_20_12_13'. Similarly, total sell is
     WHERE side = 'sell'
 ```
 
-To compute the PnL for a given strategy we sum sell orders (quantity * price) and 
+To compute the PnL for a given strategy I sum sell orders (quantity * price) and 
 substract buy orders (-quantity * price). In SQL it reads
 ```sql
 SELECT IFNULL(SUM(
@@ -48,9 +48,9 @@ SELECT IFNULL(SUM(
 FROM epex_2022_12_20_12-13
 WHERE strategy = ?
 ```
-for each strategy (strategy = ?). We also included '0' for the case if there is no trade. 
+for each strategy (strategy = ?). I also included '0' for the case if there is no trade. 
 
-Finally, we need to expose the PnL calculation via an API. A standard approach is to 
+Finally, I need to expose the PnL calculation via an API. A standard approach is to 
 use FastAPI. There the API expsure can be achieved as 
 ```python
 @app.get("/pnl/{strategy_id}")
