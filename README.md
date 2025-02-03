@@ -1,4 +1,5 @@
 # flexpower_quant_challenge
+
 My approach to solving Flex Power Quant Challenge 
 
 ## Task 1 Minimal Reporting tool
@@ -51,7 +52,7 @@ WHERE strategy = ?
 for each strategy (strategy = ?). I also included '0' for the case if there is no trade. 
 
 Finally, I need to expose the PnL calculation via an API. A standard approach is to 
-use FastAPI. There the API expsure can be achieved as 
+use FastAPI. There the API end point can be created as  
 ```python
 @app.get("/pnl/{strategy_id}")
 def getpnl(strategy_id:str)->dict:
@@ -65,16 +66,19 @@ def getpnl(strategy_id:str)->dict:
     }
 ```
 
-In the actual code, in [task_1_minimal_reporting_tool.py](task_1_minimal_reporting_tool.py) 
-I have implemented the full logic 
-with several safeguards regarding database access and API structure. 
-In [test_task_1_minimal_reporting_tool.py](test_task_1_minimal_reporting_tool.py) I added a few simple tests. 
+In the actual code is implemented in [task_1_minimal_reporting_tool.py](task_1_minimal_reporting_tool.py) 
+
+I have add several safeguards regarding database access and API structure. 
+
+In [test_task_1_minimal_reporting_tool.py](test_task_1_minimal_reporting_tool.py) 
+I added a few simple tests. 
 
 I also tried using `Depends` package to avoid loading database for each query but there 
 seems to be a bug in the package dependencies which is a bit ironic... 
 
 ### Remarks 
-- Table name specified in the reame to the task is incorrect. The only table in the database is `epex_12_20_12_13`
+- Table name specified in the task README is incorrect. The only table in the database is `epex_12_20_12_13`
+
 
 ### Installation and Usage
 
@@ -84,14 +88,14 @@ seems to be a bug in the package dependencies which is a bit ironic...
 pip install -r requirements.txt
 uvicorn task_1_minimal_reporting_tool:app --reload
 ```
-This creates a local endpoint at `http://127.0.0.1:8000`
+This creates a local endpoint at `http://127.0.0.1:8000` (default settings)
 
 3. Open different terminal and run pytest (to check that server is up and running and basic functionaly works)
 ```bash
 pytest test_task_1_minimal_reporting_tool.py
 ```
 
-4. Example call for _sell_, _buy_ and _pnl_ endpoints:
+4. Example calls for _sell_, _buy_ and _pnl_ endpoints:
 
 - http://127.0.0.1:8000/volume/buy 
 - http://127.0.0.1:8000/volume/sell
@@ -101,9 +105,11 @@ pytest test_task_1_minimal_reporting_tool.py
 
 ## Task 2.1 - 2.6 
 
-Please see notebook [task_2_7_ver2.ipynb](task_2_7_ver2.ipynb) for the solution.
+Please see notebook [task_2_eda_v2.ipynb](task_2_eda_v2.ipynb) for the solution.
 
 ## Task 2.7 
 
-Please see notebook [task_2_7_ver2.ipynb](task_2_7_ver2.ipynb) for the solution.
+This task is a bit larger, so I put it into a separate notebook.  
+Please see [task_2_7_ver2.ipynb](task_2_7_ver2.ipynb) for the solution.
+
 
